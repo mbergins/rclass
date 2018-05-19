@@ -173,13 +173,41 @@ $(document).ready(function () {
 
 
 <!-- rnb-text-begin -->
+<div id="topics" class="section level1">
+<h1>Topics:</h1>
+<ul>
+<li>discuss <code>readr::read.csv</code> and why it’s better than <code>read.csv</code></li>
+<li><code>readxl::read_xls</code> to show how to import excel tables</li>
+<li>introduce <code>skip</code> and <code>comment</code> parameters</li>
+<li>discuss regular expression <strong>basics</strong> &amp; <code>gsub</code> command for replacing characters</li>
+</ul>
+</div>
+<div id="code-to-work-through" class="section level1">
+<h1>Code to work through:</h1>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGluayA8LSBcImh0dHBzOi8vdWNyLmZiaS5nb3YvY3JpbWUtaW4tdGhlLXUucy8yMDE1L2NyaW1lLWluLXRoZS11LnMuLTIwMTUvdGFibGVzL3RhYmxlLTkvdGFibGVfOV9vZmZlbnNlc19rbm93bl90b19sYXdfZW5mb3JjZW1lbnRfYnlfc3RhdGVfYnlfdW5pdmVyc2l0eV9hbmRfY29sbGVnZV8yMDE1Lnhsc1wiXG5maWxlIDwtIFwiY3JpbWUueGxzXCJcbmRvd25sb2FkLmZpbGUobGluaywgZmlsZSlcblxuYGBgIn0= -->
+<pre class="r"><code>link &lt;- &quot;https://ucr.fbi.gov/crime-in-the-u.s/2015/crime-in-the-u.s.-2015/tables/table-9/table_9_offenses_known_to_law_enforcement_by_state_by_university_and_college_2015.xls&quot;
+file &lt;- &quot;crime.xls&quot;
+download.file(link, file)
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoidHJ5aW5nIFVSTCAnaHR0cHM6Ly91Y3IuZmJpLmdvdi9jcmltZS1pbi10aGUtdS5zLzIwMTUvY3JpbWUtaW4tdGhlLXUucy4tMjAxNS90YWJsZXMvdGFibGUtOS90YWJsZV85X29mZmVuc2VzX2tub3duX3RvX2xhd19lbmZvcmNlbWVudF9ieV9zdGF0ZV9ieV91bml2ZXJzaXR5X2FuZF9jb2xsZWdlXzIwMTUueGxzJ1xuQ29udGVudCB0eXBlICdhcHBsaWNhdGlvbi92bmQubXMtZXhjZWwnIGxlbmd0aCAxNTgyMDggYnl0ZXMgKDE1NCBLQilcbj09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09XG5kb3dubG9hZGVkIDE1NCBLQlxuIn0= -->
+<pre><code>trying URL 'https://ucr.fbi.gov/crime-in-the-u.s/2015/crime-in-the-u.s.-2015/tables/table-9/table_9_offenses_known_to_law_enforcement_by_state_by_university_and_college_2015.xls'
+Content type 'application/vnd.ms-excel' length 158208 bytes (154 KB)
+==================================================
+downloaded 154 KB</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGYgPC0gcmVhZF94bHMoZmlsZSwgc2tpcCA9IDMpICAjIHNraXAgaGVhZGVyXG5cbmBgYCJ9 -->
+<pre class="r"><code>df &lt;- read_xls(file, skip = 3)  # skip header
+</code></pre>
+<!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
+</div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiUmVhZGluZyAmIENsZWFuaW5nIERhdGEiCm91dHB1dDogaHRtbF9ub3RlYm9vawotLS0KCmBgYHtyfQoKYGBgCgo=</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiUmVhZGluZyAmIENsZWFuaW5nIERhdGEiCm91dHB1dDogaHRtbF9ub3RlYm9vawotLS0KIAojIFRvcGljczoKIC0gZGlzY3VzcyBgcmVhZHI6OnJlYWQuY3N2YCBhbmQgd2h5IGl0J3MgYmV0dGVyIHRoYW4gYHJlYWQuY3N2YAogLSBgcmVhZHhsOjpyZWFkX3hsc2AgdG8gc2hvdyBob3cgdG8gaW1wb3J0IGV4Y2VsIHRhYmxlcwogLSBpbnRyb2R1Y2UgYHNraXBgIGFuZCBgY29tbWVudGAgcGFyYW1ldGVycwogLSBkaXNjdXNzIHJlZ3VsYXIgZXhwcmVzc2lvbiAqKmJhc2ljcyoqICYgYGdzdWJgIGNvbW1hbmQgZm9yIHJlcGxhY2luZyBjaGFyYWN0ZXJzCgojIENvZGUgdG8gd29yayB0aHJvdWdoOgoKYGBge3J9CmxpYnJhcnkocmVhZHhsKQpsaWJyYXJ5KG1hZ3JpdHRyKQoKbGluayA8LSAiaHR0cHM6Ly91Y3IuZmJpLmdvdi9jcmltZS1pbi10aGUtdS5zLzIwMTUvY3JpbWUtaW4tdGhlLXUucy4tMjAxNS90YWJsZXMvdGFibGUtOS90YWJsZV85X29mZmVuc2VzX2tub3duX3RvX2xhd19lbmZvcmNlbWVudF9ieV9zdGF0ZV9ieV91bml2ZXJzaXR5X2FuZF9jb2xsZWdlXzIwMTUueGxzIgpmaWxlIDwtICJjcmltZS54bHMiCmRvd25sb2FkLmZpbGUobGluaywgZmlsZSkKZGYgPC0gcmVhZF94bHMoZmlsZSwgc2tpcCA9IDMpICAjIHNraXAgaGVhZGVyCgojIGRyb3AgYW5ub3RhdGlvbnMgYXQgYm90dG9tIG9mIGRhdGEgdGFibGUKZHJvcCA8LSBucm93KGRmKSAtIDggCmRmIDwtIGRmWzE6ZHJvcCxdCgojIGRyb3AgZXh0cmEgY29sdW1ucyByZWFkIGluIGJlY2F1c2Ugb2YgYW5ub3RhdGlvbnMgYXQgYm90dG9tCmRmICU8PiUgCiAgZHBseXI6OnNlbGVjdCgtZ3JlcCgiWF8iLCBuYW1lcyguKSkpCgojIGNsZWFuIHVwIGNvbCBuYW1lcwpuYW1lcyhkZikgJTw+JSBnc3ViKCJcbiIsICJfIiwgLikgJT4lIAogIGdzdWIoIiAiLCAiXyIsIC4pICU+JSAKICBnc3ViKCItIiwgIiIsIC4pICU+JSAKICBnc3ViKCIvIiwgIi4iLCAuKSAlPiUgCiAgZ3N1YigiXFxkIiwgIiIsIC4pICU+JSAKICBnc3ViKCJbKCldIiwgIiIsIC4pICU+JSAKICB0b2xvd2VyKCkKCiMgZmlsbCBpbiBtaXNzaW5nIHZhbHVlcyBjYXVzZWQgYnkgdXNpbmcgbWVyZ2VkIGNlbGxzIGluIGV4Y2VsCmRmICU8PiUgCiAgdGlkeXI6OmZpbGwoc3RhdGUpICU+JSAKICB0aWR5cjo6ZmlsbCh1bml2ZXJzaXR5LmNvbGxlZ2UpCmBgYAoKCgoK</div>
 
 
 
